@@ -11,8 +11,8 @@ It's part of a work realized for Institut Mines-Telecom in Teralab project : htt
 I use this dataset for KMeans clustering with verification from the diagnostic. It's a small dataset (569 lines) usefull for testing purpose. The CSV file is used directly and vectorized by Scala program.A So we need only to put CSV file on HDFS and call the spar-summit programm with arguments :
 `spark-submit --class fr.teralabdatascience.tests.BreastCancer --deploy-mode client --master yarn target/breastcancer-0.0.1-SNAPSHOT.jar wisconsin_data_breast_cancer_data_org.csv`
 
-Diagnostic dataset : https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29
-Original dataset : https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Original%29
+- Diagnostic dataset : https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29
+- Original dataset : https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Original%29
 
 ## Higg's boson dataset ##
 
