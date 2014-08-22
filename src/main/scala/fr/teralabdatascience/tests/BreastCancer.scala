@@ -59,6 +59,25 @@ object BreastCancer {
     val WSSSE = clusters.computeCost(data)
     println("Within Set Sum of Squared Errors = " + WSSSE)
   }
+
+  // Construct a kind of confusion matrix
+  val result = sc.textFile("./wisconsin_data_breast_cancer_data_org.csv").map { line =>
+        val items = line.split(",")
+ 		val point = Vectors.dense(tail(items,2).map(_.toDouble))
+        val prediction = clusters.predict(point)
+       (prediction, items(1))
+  }
+  val keys = List((0,"M"), (1, "M"), (0,"B"), (1, "B"));
+  val matrix = result.countByValue();
+  print("  | M   B")
+  for (i <- 0 to 1) {
+	print("i | ")
+    ("M", "B").foreach { type =>
+	  print(matrix.get((i,type)) + "  ")
+	}
+	println("")
+  }
+
 }
 
 // vim: sw=2:ts=2:ai
