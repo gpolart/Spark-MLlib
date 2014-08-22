@@ -70,10 +70,10 @@ object BreastCancer {
   val keys = List((0,"M"), (1, "M"), (0,"B"), (1, "B"));
   val matrix = result.countByValue();
   print("  | M   B")
-  for (i <- 0 to 1) {
-	print("i | ")
-    ("M", "B").foreach { type =>
-	  print(matrix.get((i,type)) + "  ")
+  for (r <- 0 to 1) {
+	print("r | ")
+    List("M", "B").foreach { c =>
+	  print(matrix.get((r,c)) + "  ")
 	}
 	println("")
   }
