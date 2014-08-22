@@ -1,7 +1,7 @@
 // =======================================================================
 // Institut Mines Telecom - Teralab
 // =======================================================================
-package fr.teralab-datascience.tests
+package fr.teralabdatascience.tests
 
 
 import org.apache.spark.SparkContext
