@@ -58,24 +58,22 @@ object BreastCancer {
     // Evaluate clustering by computing Within Set Sum of Squared Errors
     val WSSSE = clusters.computeCost(data)
     println("Within Set Sum of Squared Errors = " + WSSSE)
-  }
 
-  // Construct a kind of confusion matrix
-  val result = sc.textFile("./wisconsin_data_breast_cancer_data_org.csv").map { line =>
-        val items = line.split(",")
- 		val point = Vectors.dense(tail(items,2).map(_.toDouble))
-        val prediction = clusters.predict(point)
-       (prediction, items(1))
-  }
-  val keys = List((0,"M"), (1, "M"), (0,"B"), (1, "B"));
-  val matrix = result.countByValue();
-  print("  | M   B")
-  for (r <- 0 to 1) {
-	print("r | ")
-    List("M", "B").foreach { c =>
-	  print(matrix.get((r,c)) + "  ")
-	}
-	println("")
+		// Construct a kind of confusion matrix
+		val result = sc.textFile("./wisconsin_data_breast_cancer_data_org.csv").map { line =>
+					val items = line.split(",")
+			val point = Vectors.dense(tail(items,2).map(_.toDouble))
+					val prediction = clusters.predict(point)
+				 (prediction, items(1))
+		}
+		val keys = List((0,"M"), (1, "M"), (0,"B"), (1, "B"));
+		val matrix = result.countByValue();
+		println("  | M   B")
+		for (r <- 0 to 1) {
+			print(r + " | ")
+			List("M", "B").foreach { c => print(matrix((r,c)) + "  ") }
+			println("")
+		}
   }
 
 }
