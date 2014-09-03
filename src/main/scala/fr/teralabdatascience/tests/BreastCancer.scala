@@ -12,14 +12,13 @@ import org.apache.spark.mllib.linalg.Vectors
 
 object BreastCancer {
   var path: String = _
-  var num_iter: Int = 20
   var numIterations: Int = 2
 
   // Print argument list
   def usage() {
     println("Arguments :")
-    println("    path     : HDFS path for CSV file from Winsconsin Breast Cancer test case")
-    println("    num_iter : K-Means iteration number (default to 20")
+    println("    path       : HDFS path for CSV file from Winsconsin Breast Cancer test case")
+    println("    iterations : K-Means iteration number (default to 20")
   }
 
   // Print argument list
@@ -61,7 +60,7 @@ object BreastCancer {
   }
 
   // Construct a kind of confusion matrix
-  val result = sc.textFile("./wisconsin_data_breast_cancer_data_org.csv").map { line =>
+  val result = sc.textFile(path).map { line =>
         val items = line.split(",")
  		val point = Vectors.dense(tail(items,2).map(_.toDouble))
         val prediction = clusters.predict(point)
