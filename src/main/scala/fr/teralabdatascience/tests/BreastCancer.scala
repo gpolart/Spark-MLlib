@@ -57,7 +57,6 @@ object BreastCancer {
     // Evaluate clustering by computing Within Set Sum of Squared Errors
     val WSSSE = clusters.computeCost(data)
     println("Within Set Sum of Squared Errors = " + WSSSE)
-  }
 
   // Construct a kind of confusion matrix
   val result = sc.textFile(path).map { line =>
@@ -70,10 +69,8 @@ object BreastCancer {
   val matrix = result.countByValue();
   print("  | M   B")
   for (r <- 0 to 1) {
-	print("r | ")
-    List("M", "B").foreach { c =>
-	  print(matrix.get((r,c)) + "  ")
-	}
+	print(r + " | ")
+    List("M", "B").foreach { c => print(matrix.get((r,c)) + "  ") }
 	println("")
   }
 
