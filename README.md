@@ -17,4 +17,9 @@ I use this dataset for KMeans clustering with verification from the diagnostic. 
 
 ## Higg's boson dataset ##
 
-TODO
+Higg's boson is a big dataset (8Go) given as a CSV file. We use the same program as for Breast Cancer Wisconsin with a litlle difference : there is only one first col for classification result (0 or 1).
+
+Dataset : http://archive.ics.uci.edu/ml/datasets/HIGGS
+
+
+
